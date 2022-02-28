@@ -1,10 +1,10 @@
 /*
- * testDriver.cpp
+ * Translator.cpp
  * 
- * Description: Drives the testing of the BST, the BSTNode, 
- *              the WordPair and all the exceptions classes. 
+ * Description: Translator application using Dictionary classes(ADT).
+ *              User should not know what kind of data structure is used. 
  *
- * Author: AL
+ * Author: Hayato Koyama
  * Last Modification Date: Feb. 2022
  */
 
@@ -16,21 +16,19 @@
 #include <sstream>
 #include <iomanip>
 #include <fstream>
-#include "BST.h"
 #include "WordPair.h"
 #include "ElementAlreadyExistsException.h"
 #include "ElementDoesNotExistException.h"
 #include "EmptyDataCollectionException.h"
 #include "Dictionary.h"
+
 //initially like this void display(const WordPair& anElement)
 void display(const WordPair& anElement) {
   cout << anElement << endl;
 } // end of display
 
 
-// As you discover what main() does, record your discoveries by commenting the code.
-// If you do not like this main(), feel free to write your own.
-// Remember, this is a test driver. Feel free to modify it as you wish!
+
 int main(int argc, char *argv[]) {
 
     void (*fun_ptr)(const WordPair&) = &display;
@@ -38,7 +36,7 @@ int main(int argc, char *argv[]) {
     Dictionary<WordPair>* testing = new Dictionary<WordPair>();
     
   
-  //BST<WordPair>* testing = new BST<WordPair>();
+  
     
   string aLine = "";
   string aWord = "";

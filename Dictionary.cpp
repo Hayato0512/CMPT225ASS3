@@ -20,7 +20,10 @@ Dictionary<ElementType>::~Dictionary()
 template <class ElementType>
 unsigned int Dictionary<ElementType>::getElementCount() const
 {
-    keyValuePairs->getElementCount();
+    unsigned int ret = keyValuePairs->getElementCount();
+    
+    return ret;
+    
 }
 
 //insert
@@ -36,7 +39,8 @@ void Dictionary<ElementType>::put(const ElementType& newElement)
 template <class ElementType>
 ElementType& Dictionary<ElementType>::get(const ElementType& targetElement) const
 {
-    keyValuePairs->retrieve(targetElement);
+    ElementType& translated = keyValuePairs->retrieve(targetElement);
+    return translated;
 }
 //traverseInorder
 template <class ElementType>
