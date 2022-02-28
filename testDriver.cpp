@@ -94,12 +94,20 @@ int main(int argc, char *argv[]) {
         cout<<"Ok, this display section is currently under construction"<<endl;
     }
     else if (argc == 1) {//no argument
-        cout<<"hello you didnt put any argument"<<endl;
        // while user has not entered CTRL+D
        while ( getline(cin, aWord) ) {   
 
           WordPair aWordPair(aWord);
           //search this word in the testing BST, if a word is found as a substring, then retrieve that element
+          try{
+               WordPair result = testing->retrieve(aWordPair.getEnglish());
+                cout<<endl<< result<<endl;
+          }
+          catch(ElementDoesNotExistException&anException){
+              cout<<"**NOT FOUND**"<<endl;
+          }
+         
+         
           // and pring the element.
           // retrieve aWordPair from "testing" using a try/catch block
 		  // print aWordPair

@@ -12,7 +12,9 @@
  */
 
 #include "BST.h"
-
+#include <string>
+#include <iostream>
+using namespace std;
 // You can modify the implementation of these methods, but cannot modify their proptotype.
 // However, if you modify the implementation of these methods, your code must still 
 // satisfy the documentation contract above each of these methods.
@@ -174,6 +176,8 @@
             if(targetElement == current->element){
                 return current->element;
             }
+            
+            
             //else if target > current, call recursively with current-> right
             else if(targetElement > current->element)
                 return retrieveR(targetElement, current->right);
