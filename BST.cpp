@@ -75,7 +75,7 @@ using namespace std;
 	    // Binary search tree is empty, so add the new element as the root
 		if (elementCount == 0) {
 			root = new BSTNode<ElementType>(newElement);
-            cout<<"successfully inserted the item "<<newElement<<endl;
+            //cout<<"successfully inserted the item "<<newElement<<endl;
 			elementCount++;
 		}
 		else{
@@ -83,7 +83,7 @@ using namespace std;
   	         throw ElementAlreadyExistsException("Element already exists in the data collection.");
   	      }
           else{
-              cout<<"successfully inserted the item "<<newElement<<endl;
+              //cout<<"successfully inserted the item "<<newElement<<endl;
           }
         }
   	   return;

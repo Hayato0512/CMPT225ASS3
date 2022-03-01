@@ -34,10 +34,7 @@ int main(int argc, char *argv[]) {
     void (*fun_ptr)(const WordPair&) = &display;
 
     Dictionary<WordPair>* testing = new Dictionary<WordPair>();
-    
-  
-  
-    
+     
   string aLine = "";
   string aWord = "";
   string englishW = "";
@@ -59,19 +56,19 @@ int main(int argc, char *argv[]) {
        aLine.erase(0, pos + delimiter.length());
        translationW = aLine;
        WordPair aWordPair(englishW, translationW);
-       cout<<aWordPair<<endl;
+       //cout<<aWordPair<<endl;
        try {
             testing->put(aWordPair);
         }
         catch ( ElementAlreadyExistsException&anException ) {
-            cout<<"detected exception because "<< anException.what()<<endl;
+            //cout<<"detected exception because "<< anException.what()<<endl;
         }
-        cout<<"testing element Count is "<<testing->getElementCount()<<endl;
+        //cout<<"testing element Count is "<<testing->getElementCount()<<endl;
 	   // insert aWordPair into "testing" using a try/catch block
     }
     myfile.close();
     cout<<endl<<endl<<endl<<endl;
-    testing->displayContent((*fun_ptr));
+    //testing->displayContent((*fun_ptr));
     
 
     // If user entered "Display" at the command line ...
