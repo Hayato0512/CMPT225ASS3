@@ -33,6 +33,8 @@ private:
 	// Feel free to add private methods to this class.ok
 	BSTNode<ElementType>* copy_BST(BSTNode<ElementType>* src, BSTNode<ElementType>* dest);
 
+	void deleteNode(BSTNode<ElementType>* current);
+
 	// Description: Recursive insertion into a binary search tree.
 	//              Returns true when "anElement" has been successfully inserted into the 
 	//              binary search tree. Otherwise, returns false.

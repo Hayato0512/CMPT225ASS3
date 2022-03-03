@@ -64,10 +64,24 @@ using namespace std;
 	// Destructor 
     template<class ElementType> 
 	BST<ElementType>::~BST() {
+        cout<<"this is Dtor"<<endl;
+    	deleteNode(root);
+        elementCount = 0;
+    } 
+    
+	template<class ElementType> 
+    void BST<ElementType>::deleteNode(BSTNode<ElementType>* current){
+        if(current==NULL){
+            return ;
+        }
+        else{
 
-    	// to do
-    }                     
-	
+            deleteNode(current->left);
+            deleteNode(current->right);
+            cout<<"deleting... "<<current->element<<endl;
+            delete current;
+        }
+    }
 	
 /* Getters and setters */
 
