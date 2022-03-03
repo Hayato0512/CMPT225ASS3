@@ -31,7 +31,7 @@ private:
     /* Utility methods */
 
 	// Feel free to add private methods to this class.ok
-	
+	BSTNode<ElementType>* copy_BST(BSTNode<ElementType>* src, BSTNode<ElementType>* dest);
 
 	// Description: Recursive insertion into a binary search tree.
 	//              Returns true when "anElement" has been successfully inserted into the 

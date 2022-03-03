@@ -38,9 +38,28 @@ using namespace std;
     // Copy constructor
     template<class ElementType>  
 	BST<ElementType>::BST(const BST<ElementType>& aBST)  
-	{
-		// to do
+	{   root = NULL;
+        root = copy_BST(aBST.root,root);
+        elementCount = aBST.elementCount;
 	}
+
+    template<class ElementType>  
+    BSTNode<ElementType>* BST<ElementType>::copy_BST(BSTNode<ElementType>* src, BSTNode<ElementType>* dest){
+        if(src==NULL){
+            dest = NULL;
+        }
+        else{
+            dest = new BSTNode<ElementType>();
+            dest->element = src->element;
+            
+
+            dest->left = copy_BST(src->left,dest->left);
+            dest->right = copy_BST(src->right,dest->right);
+            
+        }
+        return dest;
+        
+    }
 
 	// Destructor 
     template<class ElementType> 
