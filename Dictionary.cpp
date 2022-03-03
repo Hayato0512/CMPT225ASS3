@@ -14,7 +14,7 @@ Dictionary<ElementType>::Dictionary()
 template <class ElementType>
 Dictionary<ElementType>::~Dictionary()
 {
-
+    delete keyValuePairs;
 }
 
 template <class ElementType>

@@ -67,7 +67,7 @@ using namespace std;
         cout<<"this is Dtor"<<endl;
     	deleteNode(root);
         elementCount = 0;
-    } 
+    }
     
 	template<class ElementType> 
     void BST<ElementType>::deleteNode(BSTNode<ElementType>* current){
