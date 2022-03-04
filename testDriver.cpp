@@ -38,13 +38,13 @@ int main(int argc, char *argv[]) {
     Dictionary<WordPair>* testing = new Dictionary<WordPair>();
     
   
-  //BST<WordPair>* testing = new BST<WordPair>();
-    
+ // BST<WordPair>* testing = new BST<WordPair>();
+ 
   string aLine = "";
   string aWord = "";
   string englishW = "";
   string translationW = "";
-  string filename = "dataFile.txt";
+  string filename = "myDataFile.txt";
   string delimiter = ":";
   size_t pos = 0;
   WordPair translated;

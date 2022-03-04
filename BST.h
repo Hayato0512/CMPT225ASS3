@@ -7,8 +7,8 @@
  *
  * Class invariant: It is always a BST.
  * 
- * Author: Inspired from our textbook
- * Date of last modification: Feb. 2022
+ * Author: Hayato Koyama
+ * Date of last modification: March 3rd. 2022
  */
 
 #pragma once
@@ -24,15 +24,20 @@ class BST {
 	
 private:
 
-	// You cannot change the following data members of this class.
+	
 	BSTNode<ElementType>* root; 
     unsigned int elementCount;           
 
     /* Utility methods */
 
-	// Feel free to add private methods to this class.ok
+	// Description: create a whole new BST by copying an old BST(deep copy)
+	//               this is used from the copy constructor.
+	//              .copy each nodes by vising them recursively.
 	BSTNode<ElementType>* copy_BST(BSTNode<ElementType>* src, BSTNode<ElementType>* dest);
 
+	// Description: delete all the nodes in BST that are dynamically allocated.
+	//               this is used from Destructor at the end of the program to make sure no memory leak.(works, checked with Valgrind)
+	//               delete nodes by visiting them recursively, in post-order.
 	void deleteNode(BSTNode<ElementType>* current);
 
 	// Description: Recursive insertion into a binary search tree.
@@ -51,10 +56,6 @@ private:
 		 
 public:
 
-	// You cannot change the prototype of the public methods of this class.
-	// Remember, if you add public methods to this class, our test driver 
-	// - the one we will use to mark this assignment - will not know about them
-	// since we will use these public method prototypes to create our test driver.
 
     /* Constructors and destructor */
 	BST();                               // Default constructor
@@ -70,7 +71,7 @@ public:
 */
 
     /* BST Operations */
-
+	
     // Description: Inserts an element into the binary search tree.
 	//              This is a wrapper method which calls the recursive insertR( ).
 	// Precondition: "newElement" does not already exist in the binary search tree.

@@ -7,17 +7,14 @@
  *
  * Class invariant: It is always a BST.
  * 
- * Author: Inspired from our textbook
- * Date of last modification: Feb. 2022
+ * Author: Hayato Koyama
+ * Date of last modification: March 3rd. 2022
  */
 
 #include "BST.h"
 #include <string>
 #include <iostream>
 using namespace std;
-// You can modify the implementation of these methods, but cannot modify their proptotype.
-// However, if you modify the implementation of these methods, your code must still 
-// satisfy the documentation contract above each of these methods.
 
 /* Constructors and destructor */
 
@@ -39,20 +36,28 @@ using namespace std;
     template<class ElementType>  
 	BST<ElementType>::BST(const BST<ElementType>& aBST)  
 	{   root = NULL;
+        //call copy_BST
         root = copy_BST(aBST.root,root);
+        //set the elementCount same as the old BST
         elementCount = aBST.elementCount;
 	}
 
+    // Description: create a whole new BST by copying an old BST(deep copy)
+	//               this is used from the copy constructor.
+	//              .copy each nodes by vising them recursively.
     template<class ElementType>  
     BSTNode<ElementType>* BST<ElementType>::copy_BST(BSTNode<ElementType>* src, BSTNode<ElementType>* dest){
+        //if the old BST is NULL, the new one is also NULL
         if(src==NULL){
             dest = NULL;
         }
         else{
+            //allocate memory to the new Node
             dest = new BSTNode<ElementType>();
+            //copy the element of the old root
             dest->element = src->element;
             
-
+            //call copy_BST for left&right recursively, and assign them to the dest->left and right
             dest->left = copy_BST(src->left,dest->left);
             dest->right = copy_BST(src->right,dest->right);
             
@@ -64,21 +69,24 @@ using namespace std;
 	// Destructor 
     template<class ElementType> 
 	BST<ElementType>::~BST() {
-        cout<<"this is Dtor"<<endl;
+        //call deleteNode and set the elementCount = 0
     	deleteNode(root);
         elementCount = 0;
     }
     
+    // Description: delete all the nodes in BST that are dynamically allocated.
+	//               this is used from Destructor at the end of the program to make sure no memory leak.(works, checked with Valgrind)
+	//               delete nodes by visiting them recursively, in post-order.
 	template<class ElementType> 
     void BST<ElementType>::deleteNode(BSTNode<ElementType>* current){
+        //if the tree is NULL, dont do anything
         if(current==NULL){
             return ;
         }
         else{
-
+            //use post-order recursive traversal to successfully delete nodes from the bottom.
             deleteNode(current->left);
             deleteNode(current->right);
-            cout<<"deleting... "<<current->element<<endl;
             delete current;
         }
     }
@@ -129,7 +137,6 @@ using namespace std;
 	bool BST<ElementType>::insertR(const ElementType& anElement, BSTNode<ElementType>* current) { 
         //if current's element = anElement, return false;
         if(current->element==anElement){
-            //cout<<"already exist man"<<endl;
             return false;
         }
         //if cuurent's elemt is not anelement,
@@ -141,7 +148,7 @@ using namespace std;
                 if(current->hasRight()){
                     return insertR(anElement, current->right);
                 }
-                //if current doesnt have righ child, make a new node with an ELemnt and set the node to current's rightChild, Count++ return true)
+                //if current doesnt have righ child, make a new node with an ELemnt and set the node to current's rightChild, Count++, return true)
                 else{
                     BSTNode<ElementType>* newNode = new BSTNode<ElementType>(anElement);
                     current->right = newNode;
@@ -166,11 +173,9 @@ using namespace std;
 
             }
             
-            
-            
         }
         return false;
-	}
+	} //end of insertR
 
 	
     // Description: Retrieves "targetElement" from the binary search tree.
@@ -219,12 +224,6 @@ using namespace std;
                 return retrieveR(targetElement, current->left);
             }
         }
-        //return 0;
-        
-       
-        
-        
-		// to do
 
 	} // end of retrieveR
 				
@@ -256,7 +255,7 @@ using namespace std;
             return ;
 
         //else, call left
-        //      print current
+        //      print current   => in-Order method
         //       call right
         else{
             traverseInOrderR(visit, current->left);
@@ -264,5 +263,4 @@ using namespace std;
             traverseInOrderR(visit, current->right);
         }
        ;
-	}
-	
+	}// end of traverseInOrderR

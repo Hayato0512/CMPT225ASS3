@@ -5,8 +5,8 @@
  *              BST-based implementation.
  *              Duplicated elements not allowed.
  *              
- * Author: AL
- * Date: Feb. 2022
+ * Author: Hayato Koyama
+ * Date: March 3rd. 2022
  */
 
  #pragma once
@@ -18,34 +18,35 @@ class Dictionary {
 	
 private:
 
-/* You cannot change the following data member of this class. */
-    BST<ElementType> * keyValuePairs;                  
+    BST<ElementType> * keyValuePairs;   
 
-/* Feel free to add private methods to this class. */
 	
 public:
 
-/* You cannot change the prototype of the public methods of this class.
-   Remember, if you add public methods to this class, our test driver 
-   - the one we will use to mark this assignment - will not know about them
-   since we will use these public method prototypes to create our test driver. */
 
     // Constructors and destructor:
 	Dictionary();                               // Default constructor
     Dictionary(ElementType& element);           // Parameterized constructor 
     ~Dictionary();                              // Destructor 
 	
-    // Dictionary operations:
+// Dictionary operations:    
+
+    // Description: get the elementCount of the dictionary.
 	unsigned int getElementCount() const;
 	
 	// Description: Puts "newElement" into the dictionary.
-	// ...
+	// Pre-condition: "newElement" does not already exist in the Dictionary.
+    // Post- condition: newElement is successfully added to the dictionary. 
 	void put(const ElementType& newElement);
 
 	// Description: Gets "newElement" from the dictionary.
-	// ...
+	// Pre-condition: the Dictionary must not be empty.
+    // Post- condition: targetElement is successfully retrieved from the dictionary. 
+    //                  if the element is not in the dictionary, return "**NOT FOUND**".
 	ElementType& get(const ElementType& targetElement) const;
 
+    // Description: Display the content in alphabetical order.
+	// Pre-condition: the Dictionary must not be empty.
     void displayContent(void visit(const ElementType&)) const;
 	
 }; // end Dictionary
